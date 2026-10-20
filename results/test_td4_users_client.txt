@@ -1,0 +1,19 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.14.8, pytest-8.3.4, pluggy-1.6.0 -- /Users/liriohq/projects/user-order-services/.venv/bin/python
+rootdir: /Users/liriohq/projects/integration-testing-top-down
+configfile: pytest.ini
+plugins: anyio-4.15.1
+collecting ... collected 8 items
+
+tests/test_td4_users_client.py::test_td4_01_user_comes_over_http PASSED  [ 12%]
+tests/test_td4_users_client.py::test_td4_02_request_id_reaches_users_api PASSED [ 25%]
+tests/test_td4_users_client.py::test_td4_03_users_404_becomes_orders_404 PASSED [ 37%]
+tests/test_td4_users_client.py::test_td4_04_broken_users_api_becomes_503[error500-User service returned 500] PASSED [ 50%]
+tests/test_td4_users_client.py::test_td4_04_broken_users_api_becomes_503[not_json-User service returned an invalid response] PASSED [ 62%]
+tests/test_td4_users_client.py::test_td4_05_slow_users_api_hits_timeout PASSED [ 75%]
+tests/test_td4_users_client.py::test_td4_06_health_is_ok_while_users_api_is_down PASSED [ 87%]
+tests/test_td4_users_client.py::test_td4_07_extra_field_over_http_is_ignored XFAIL [100%]
+
+=========================== short test summary info ============================
+XFAIL tests/test_td4_users_client.py::test_td4_07_extra_field_over_http_is_ignored - TD-D3: новое поле в ответе Users API даёт 500 в Orders API
+========================= 7 passed, 1 xfailed in 0.93s =========================

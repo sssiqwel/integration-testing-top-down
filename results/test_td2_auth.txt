@@ -1,0 +1,18 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.14.8, pytest-8.3.4, pluggy-1.6.0 -- /Users/liriohq/projects/user-order-services/.venv/bin/python
+rootdir: /Users/liriohq/projects/integration-testing-top-down
+configfile: pytest.ini
+plugins: anyio-4.15.1
+collecting ... collected 7 items
+
+tests/test_td2_auth.py::test_td2_01_valid_token_creates_order PASSED     [ 14%]
+tests/test_td2_auth.py::test_td2_02_missing_token PASSED                 [ 28%]
+tests/test_td2_auth.py::test_td2_03_wrong_token PASSED                   [ 42%]
+tests/test_td2_auth.py::test_td2_04_scheme_is_case_insensitive PASSED    [ 57%]
+tests/test_td2_auth.py::test_td2_05_reading_does_not_require_token PASSED [ 71%]
+tests/test_td2_auth.py::test_td2_06_auth_is_checked_before_body_validation PASSED [ 85%]
+tests/test_td2_auth.py::test_td2_07_wrong_scheme_has_clear_message XFAIL [100%]
+
+=========================== short test summary info ============================
+XFAIL tests/test_td2_auth.py::test_td2_07_wrong_scheme_has_clear_message - TD-D4: при схеме Basic ответ «Missing Authorization header», хотя заголовок есть
+========================= 6 passed, 1 xfailed in 0.22s =========================

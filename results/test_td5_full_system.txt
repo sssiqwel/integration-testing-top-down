@@ -1,0 +1,17 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.14.8, pytest-8.3.4, pluggy-1.6.0 -- /Users/liriohq/projects/user-order-services/.venv/bin/python
+rootdir: /Users/liriohq/projects/integration-testing-top-down
+configfile: pytest.ini
+plugins: anyio-4.15.1
+collecting ... collected 5 items
+
+tests/test_td5_full_system.py::test_td5_01_end_to_end PASSED             [ 20%]
+tests/test_td5_full_system.py::test_td5_02_missing_user_in_real_users_api PASSED [ 40%]
+tests/test_td5_full_system.py::test_td5_03_order_reflects_current_user_data PASSED [ 60%]
+tests/test_td5_full_system.py::test_td5_04_list_after_users_restart XFAIL [ 80%]
+tests/test_td5_full_system.py::test_td5_05_user_id_is_not_reused_after_restart XFAIL [100%]
+
+=========================== short test summary info ============================
+XFAIL tests/test_td5_full_system.py::test_td5_04_list_after_users_restart - TD-D1 подтверждён на реальной системе: после рестарта Users GET /orders = 404
+XFAIL tests/test_td5_full_system.py::test_td5_05_user_id_is_not_reused_after_restart - TD-D5: после рестарта Users id переиспользуются, заказ показывает чужого человека
+========================= 3 passed, 2 xfailed in 0.52s =========================

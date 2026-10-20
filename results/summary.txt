@@ -1,0 +1,5 @@
+test_td1_controller: ok — 7 passed, 4 xfailed in 0.22s
+test_td2_auth: ok — 6 passed, 1 xfailed in 0.22s
+test_td3_storage: ok — 5 passed in 0.22s
+test_td4_users_client: ok — 7 passed, 1 xfailed in 0.93s
+test_td5_full_system: ok — 3 passed, 2 xfailed in 0.52s

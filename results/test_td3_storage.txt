@@ -1,0 +1,14 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.14.8, pytest-8.3.4, pluggy-1.6.0 -- /Users/liriohq/projects/user-order-services/.venv/bin/python
+rootdir: /Users/liriohq/projects/integration-testing-top-down
+configfile: pytest.ini
+plugins: anyio-4.15.1
+collecting ... collected 5 items
+
+tests/test_td3_storage.py::test_td3_01_ids_are_sequential_and_location_resolves PASSED [ 20%]
+tests/test_td3_storage.py::test_td3_02_list_returns_saved_orders_in_creation_order PASSED [ 40%]
+tests/test_td3_storage.py::test_td3_03_item_is_stored_trimmed PASSED     [ 60%]
+tests/test_td3_storage.py::test_td3_04_rejected_requests_do_not_consume_ids PASSED [ 80%]
+tests/test_td3_storage.py::test_td3_05_unavailable_users_leaves_storage_untouched PASSED [100%]
+
+============================== 5 passed in 0.22s ===============================

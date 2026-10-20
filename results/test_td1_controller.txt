@@ -1,0 +1,25 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.14.8, pytest-8.3.4, pluggy-1.6.0 -- /Users/liriohq/projects/user-order-services/.venv/bin/python
+rootdir: /Users/liriohq/projects/integration-testing-top-down
+configfile: pytest.ini
+plugins: anyio-4.15.1
+collecting ... collected 11 items
+
+tests/test_td1_controller.py::test_td1_01_health PASSED                  [  9%]
+tests/test_td1_controller.py::test_td1_02_create_order_uses_stubbed_user PASSED [ 18%]
+tests/test_td1_controller.py::test_td1_03_failed_user_lookup_does_not_create_order[user-missing] PASSED [ 27%]
+tests/test_td1_controller.py::test_td1_03_failed_user_lookup_does_not_create_order[users-api-down] PASSED [ 36%]
+tests/test_td1_controller.py::test_td1_04_invalid_body_never_reaches_lower_modules PASSED [ 45%]
+tests/test_td1_controller.py::test_td1_05_unknown_order_is_404_without_user_lookup PASSED [ 54%]
+tests/test_td1_controller.py::test_td1_06_list_calls_users_client_once_per_order PASSED [ 63%]
+tests/test_td1_controller.py::test_td1_07_list_survives_one_missing_user XFAIL [ 72%]
+tests/test_td1_controller.py::test_td1_08_existing_order_is_not_reported_as_missing XFAIL [ 81%]
+tests/test_td1_controller.py::test_td1_09_extra_field_from_users_is_ignored XFAIL [ 90%]
+tests/test_td1_controller.py::test_td1_10_incomplete_user_is_reported_as_dependency_error XFAIL [100%]
+
+=========================== short test summary info ============================
+XFAIL tests/test_td1_controller.py::test_td1_07_list_survives_one_missing_user - TD-D1: один заказ с пропавшим пользователем роняет весь GET /orders
+XFAIL tests/test_td1_controller.py::test_td1_08_existing_order_is_not_reported_as_missing - TD-D2: существующий заказ отвечает 404, как будто его нет
+XFAIL tests/test_td1_controller.py::test_td1_09_extra_field_from_users_is_ignored - TD-D3: лишнее поле в ответе Users API даёт 500 в Orders API
+XFAIL tests/test_td1_controller.py::test_td1_10_incomplete_user_is_reported_as_dependency_error - TD-D3: неполный ответ Users API даёт 500 вместо 503
+========================= 7 passed, 4 xfailed in 0.22s =========================
