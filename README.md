@@ -46,25 +46,29 @@ make install
 make test
 ```
 
-`make install` создаёт `.venv` и ставит зависимости. Сервисы отдельно запускать не нужно: тесты поднимают их сами.
+`make install` создаёт `.venv` и ставит зависимости.
 
-`make test` идёт по этапам по порядку. Если этап не прошёл, следующие не запускаются. Вывод каждого этапа сохраняется в `results/`.
+<img src="screenshots/01-install.png" alt="make install" width="1100">
 
-Один этап отдельно:
+Сервисы отдельно запускать не нужно: тесты поднимают их сами.
+
+Первый этап, только контроллер и заглушки:
 
 ```bash
 .venv/bin/python -m pytest tests/test_td1_controller.py -v
 ```
 
-## Результат
+<img src="screenshots/02-stage1.png" alt="Первый этап: 7 passed, 4 xfailed" width="1100">
 
-```
-test_td1_controller: ok — 7 passed, 4 xfailed
-test_td2_auth: ok — 6 passed, 1 xfailed
-test_td3_storage: ok — 5 passed
-test_td4_users_client: ok — 7 passed, 1 xfailed
-test_td5_full_system: ok — 3 passed, 2 xfailed
-```
+`make test` идёт по этапам по порядку. Если этап не прошёл, следующие не запускаются. Вывод каждого этапа сохраняется в `results/`.
+
+<img src="screenshots/03-stages-1.png" alt="Этапы 1 и 2" width="1100">
+
+<img src="screenshots/03-stages-2.png" alt="Конец этапа 4" width="1100">
+
+<img src="screenshots/03-stages-3.png" alt="Этап 5" width="1100">
+
+<img src="screenshots/03-stages-4.png" alt="Итог по этапам" width="940">
 
 `xfailed` здесь не сбой запуска. Так помечены тесты на уже найденные дефекты: пока дефект в коде есть, тест падает, и это ожидаемо. Посмотреть их как обычные падения:
 
@@ -72,7 +76,9 @@ test_td5_full_system: ok — 3 passed, 2 xfailed
 make defects
 ```
 
-Будет `8 failed`. Это восемь тестов на пять дефектов ниже.
+<img src="screenshots/04-defects.png" alt="make defects: 8 failed" width="1100">
+
+`8 failed` — это восемь тестов на пять дефектов ниже.
 
 ## Найденные дефекты
 
@@ -94,6 +100,7 @@ make defects
 users_service/     Users API
 orders_service/    Orders API
 tests/             этапы, заглушки, общие фикстуры
+screenshots/       скриншоты прогона
 results/           вывод прогона по этапам
 report/            отчёт
 run_stages.sh      запуск этапов по очереди
