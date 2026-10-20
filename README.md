@@ -37,10 +37,9 @@
 
 ## Запуск
 
-Нужен Python 3.12 или новее.
+Нужен Python 3.12 или новее. Команды выполняются из папки репозитория.
 
 ```bash
-git clone https://github.com/sssiqwel/integration-testing-top-down.git
 cd integration-testing-top-down
 make install
 make test
